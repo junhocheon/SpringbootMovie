@@ -1,0 +1,85 @@
+<!-- users.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<title>User List</title>
+	<style>
+		.table-list tbody{
+			
+		}
+	</style>
+</head>
+
+<body>
+	<h1>User List</h1>
+	<table class="table-list">
+		<thead>
+			<tr class="tabel-tr">
+				<th>유저번호</th>
+				<th>이름</th>
+				<th>아이디</th>
+				<th>주소</th>
+				<th>전화번호</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+
+	</table>
+
+	<script>
+
+		$.ajax({
+			url: '/user/listapi',
+			type: 'GET',
+			dataType: 'json',
+			success: function (data) {
+				const tbody = document.querySelector('.table-list tbody');
+				tbody.innerHTML = '';
+				data.forEach(user => {
+
+					const tr = document.createElement('tr');
+					const tdusernum = document.createElement('td');
+					const tduserLink = document.createElement('a');
+					tduserLink.textContent = user.users_num;
+					tdusernum.style.color = 'blue'
+					tduserLink.href = `/user/List?usersNum=${user.users_num}`;
+					tdusernum.appendChild(tduserLink);
+					tr.appendChild(tdusernum);
+					
+					const tdName = document.createElement('td');
+					tdName.textContent = user.username;
+					tr.appendChild(tdName);
+
+					const tdId = document.createElement('td');
+					tdId.textContent = user.id;
+					tr.appendChild(tdId);
+
+					const tdAddress = document.createElement('td');
+					tdAddress.textContent = user.address; // 사용자 주소를 텍스트 콘텐츠로 설정합니다.
+					tr.appendChild(tdAddress); // tr 요소에 주소 td 요소를 추가합니다.
+
+					const tdPhoneNumber = document.createElement('td');
+					tdPhoneNumber.textContent = user.phone_number; // 사용자 전화번호를 텍스트 콘텐츠로 설정합니다.
+					tr.appendChild(tdPhoneNumber); // tr 요소에 전화번호 td 요소를 추가합니다.
+
+
+					
+					tbody.appendChild(tr); // tbody 요소에 tr 요소를 추가합니다.
+
+
+			
+				});
+			}
+		});
+
+	</script>
+</body>
+
+</html>
