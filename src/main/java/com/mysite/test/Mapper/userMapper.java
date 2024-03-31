@@ -17,4 +17,5 @@ public interface userMapper {
 	@Select("select * from users where users_num = #{userNum}")
 	List<userModel> finduserNum(@Param("userNum")Integer userNum);
 
+	
 }

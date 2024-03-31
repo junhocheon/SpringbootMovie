@@ -15,6 +15,12 @@ import com.mysite.test.model.userModel;
 @Controller
 public class mainController {
 
+	@GetMapping("/")
+	public String main() {
+		return "redirect:/user/List";
+	}
+	
+	
 	
 	@Autowired
 	private final userMapper um;
@@ -28,6 +34,7 @@ public class mainController {
 		if(number != null) {
 			List<userModel> users = um.finduserNum(number);
 			model.addAttribute("users", users);
+			
 			
 			return "userDetail";
 		}
