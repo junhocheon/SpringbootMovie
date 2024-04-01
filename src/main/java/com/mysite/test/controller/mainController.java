@@ -9,25 +9,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mysite.test.Mapper.userMapper;
+import com.mysite.test.model.moviesModel;
 import com.mysite.test.model.userModel;
 
 
 @Controller
 public class mainController {
-
-	@GetMapping("/")
-	public String main() {
-		return "redirect:/user/List";
-	}
-	
-	
-	
 	@Autowired
 	private final userMapper um;
-		
+	
 	public mainController(userMapper umapper) {
 		this.um = umapper;
 	}
+
+
+	
+	@GetMapping("/")
+	public String main(Model model) {
+	
+	List<moviesModel> movies = um.findMovie_List();
+	
+	model.addAttribute("movies", movies);	
+		
+		
+	return "main";
+	}
+	
+	
+	
 
 	@GetMapping("/user/List")
 	public String userList(@RequestParam(name ="usersNum",required = false)Integer number,Model model) {
