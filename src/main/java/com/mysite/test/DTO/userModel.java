@@ -1,4 +1,4 @@
-package com.mysite.test.model;
+package com.mysite.test.DTO;
 
 import lombok.Getter;
 import lombok.Setter;

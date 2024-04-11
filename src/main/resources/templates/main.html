@@ -5,9 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
-		main-warrap{
-			
-		}
+	
 		
 		.movie-card {
 			border: 1px solid #ccc;
@@ -33,14 +31,17 @@
 
 <body>
 	<div class="main-warrap">
-		MOive as
+		Movie List
+		<div class="create Button">
+			<a href="/moviecreate">생성</a>
+		</div>
 	</div>
 	
 	<div th:each="movie : ${movies}" class="movie-card">
-		<img th:src="@{${movie.movie_pictrrue}}" alt="Car Headlight" class="movie-image">
+		<img th:src="@{${movie.movie_pictrue}}" alt="Car Headlight" class="movie-image">
 		<div class="movie-info">
 			<div class="movie-title" th:text="${movie.movie_name}">Movie Title</div>
-			<div class="movie-description">Movie description here...</div>
+			<div class="movie-description" th:text="${movie.movie_details}"></div>
 		</div>
 	</div>
 </body>

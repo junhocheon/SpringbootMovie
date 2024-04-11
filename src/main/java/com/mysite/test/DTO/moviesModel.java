@@ -1,4 +1,4 @@
-package com.mysite.test.model;
+package com.mysite.test.DTO;
 
 import java.time.LocalDate;
 
@@ -16,13 +16,14 @@ public class moviesModel{
 	private LocalDate finish_date;
 	private int movie_showtime;
 	private String movie_code;
-	private String movie_pictrrue;
+	private String movie_pictrue;
+	private String movie_details;
 	
 	  public moviesModel() {
 	    }
 
 	    // 전체 필드를 초기화하는 생성자
-	    public moviesModel(int movieNum, String movieName, int price, LocalDate releaseDate, LocalDate finishDate, int movieShowtime, String movieCode, String moviePicture) {
+	    public moviesModel(int movieNum, String movieName, int price, LocalDate releaseDate, LocalDate finishDate, int movieShowtime, String movieCode, String moviePicture, String movie_details) {
 	        this.movie_num = movieNum;
 	        this.movie_name = movieName;
 	        this.price = price;
@@ -30,6 +31,7 @@ public class moviesModel{
 	        this.finish_date = finishDate;
 	        this.movie_showtime = movieShowtime;
 	        this.movie_code = movieCode;
-	        this.movie_pictrrue = moviePicture;
+	        this.movie_pictrue = moviePicture;
+	        this.movie_details = movie_details;
 	    }
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmIns:th="http://www.thymeleaf.org" lang="kr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=deviece-width, initial-scale=1.0">
+	<title>새로운 영화 생성</title>
+</head>
+
+<form id="movieCreate" action="/moviecreate" type="post">
+	<label for="movie_name">영화 제목</label>
+	<input type="text" class="movie_name" name="movie_name"><br>
+
+	<label for="price">가격</label>
+	<input type="number" class="price" name="price"><br>
+
+	<label for="release_date">출시 날짜</label>
+	<input type="date" class="release_date" name="release_date"><br>
+
+	<label for="finish_date">종영 날짜</label>
+	<input type="date" class="finish_date" name="finish_date"><br>
+
+	<label for="showTime">상영시간(분)</label>
+	<input type="number" class="movie_showtime" name="movie_showtime"> <br>
+
+	<label for="movie_code">식별코드</label>
+	<input type="text" class="movie_code" name="movie_code"> <br>
+
+	<label for="movie_pictrue">영화 사진</label>
+	<input type="file" name="movie_pictrue" class="movie_pcitrue"> <br>
+
+	<label for="movie_details">정보</label>
+	<input type="text" name="movie_details" class="movie_details"> <br>
+
+<button type="submit">생성</button>	
+</form>
+
+
+<body>
+
+</body>
+
+</html>

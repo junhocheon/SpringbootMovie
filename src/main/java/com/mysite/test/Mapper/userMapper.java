@@ -1,15 +1,15 @@
 package com.mysite.test.Mapper;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-import com.mysite.test.model.moviesModel;
-import com.mysite.test.model.userModel;
+import com.mysite.test.DTO.moviesModel;
+import com.mysite.test.DTO.userModel;
 
 @Mapper
 public interface userMapper {
@@ -21,12 +21,12 @@ public interface userMapper {
 	List<userModel> finduserNum(@Param("userNum")Integer userNum);
 
 	
-	
-	
-	
-	
-	
 	@Select("select * from movie_list")
 	List<moviesModel> findMovie_List();
+	
+	
+	@Insert("INSERT INTO movie_list (movie_name, price, release_date, finish_date, movie_showtime, movie_code, movie_picture, movie_details) " +
+	        "VALUES (#{movie_name}, #{price}, #{release_date}, #{finish_date}, #{movie_showtime}, #{movie_code}, CONCAT('images/'+ #{movie_picture}), #{movie_details})")
+	List<moviesModel> createMovie(String movie_name,int price, LocalDate release_date,LocalDate finish_date, int movie_showtime, String movie_code, String movie_pictrue, String movie_details);
 	
 }
