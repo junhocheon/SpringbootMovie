@@ -38,7 +38,7 @@
 	</div>
 	
 	<div th:each="movie : ${movies}" class="movie-card">
-		<img th:src="@{${movie.movie_pictrue}}" alt="Car Headlight" class="movie-image">
+		<img th:src="@{${movie.movie_pictrue}}" alt="사진오류" class="movie-image">
 		<div class="movie-info">
 			<div class="movie-title" th:text="${movie.movie_name}">Movie Title</div>
 			<div class="movie-description" th:text="${movie.movie_details}"></div>

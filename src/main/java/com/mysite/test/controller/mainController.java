@@ -1,5 +1,7 @@
 package com.mysite.test.controller;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mysite.test.DTO.moviesModel;
 import com.mysite.test.DTO.userModel;
 import com.mysite.test.Mapper.userMapper;
+import com.mysite.test.service.fileUpload;
 
 
 @Controller
 public class mainController {
+	
 	@Autowired
 	private final userMapper um;
 	
@@ -55,8 +60,21 @@ public class mainController {
 	}
 	
 	@PostMapping("/moviecreate")
-	public String moviecreate() {
-		return "redirect:hi";
+	public String moviecreate(
+			@RequestParam(name = "movie_name")String movie_name,
+			@RequestParam(name = "price")int price,
+			@RequestParam(name = "release_date")LocalDate release_date,
+			@RequestParam(name = "finish_date")LocalDate finish_date,
+			@RequestParam(name = "movie_showtime")int movie_showtime,
+			@RequestParam(name = "movie_code")String movie_code,
+			@RequestParam("movie_pictrue")MultipartFile movie_pcitrue,
+			@RequestParam(name = "movie_details")String movie_details) throws IOException {
+			
+		
+			um.createMovie(movie_name, price, release_date, finish_date, movie_showtime,movie_code,fileUpload.upFile(movie_pcitrue),  movie_details);
+			
+		
+		return "redirect:/";
 	}
 	
 }

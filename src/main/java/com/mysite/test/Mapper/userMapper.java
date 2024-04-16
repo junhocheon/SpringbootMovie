@@ -25,8 +25,15 @@ public interface userMapper {
 	List<moviesModel> findMovie_List();
 	
 	
-	@Insert("INSERT INTO movie_list (movie_name, price, release_date, finish_date, movie_showtime, movie_code, movie_picture, movie_details) " +
-	        "VALUES (#{movie_name}, #{price}, #{release_date}, #{finish_date}, #{movie_showtime}, #{movie_code}, CONCAT('images/'+ #{movie_picture}), #{movie_details})")
-	List<moviesModel> createMovie(String movie_name,int price, LocalDate release_date,LocalDate finish_date, int movie_showtime, String movie_code, String movie_pictrue, String movie_details);
-	
+	@Insert("INSERT INTO movie_list (movie_name, price, relese_date, finish_date, movie_showtime, movie_code, movie_pictrue, movie_details) " +
+	        "VALUES (#{movie_name}, #{price}, #{relese_date}, #{finish_date}, #{movie_showtime}, #{movie_code}, CONCAT('images/', #{movie_pictrue}), #{movie_details})")
+	void createMovie(@Param("movie_name") String movie_name,
+	                              @Param("price") int price,
+	                              @Param("relese_date") LocalDate relese_date,
+	                              @Param("finish_date") LocalDate finish_date,
+	                              @Param("movie_showtime") int movie_showtime,
+	                              @Param("movie_code") String movie_code,
+	                              @Param("movie_pictrue") String movie_pictrue,
+	                              @Param("movie_details") String movie_details);
+
 }
